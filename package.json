@@ -5,8 +5,10 @@
   "scripts": {
       "securitycheck": "nsp check",
       "prestart": "babel-node build_scripts/startMessage.js",
-      "start": "npm-run-all --parallel securitycheck open:src",
+      "start": "npm-run-all --parallel securitycheck open:src lint:watch",
       "open:src": "babel-node build_scripts/srcServer.js",
+      "lint": "esw webpack.config.* src build_scripts --color",
+      "lint:watch": "npm run lint -- --watch",
       "localtunnel": "lt --port 3000",
       "share": "npm-run-all --parallel open:src localtunnel"
   },
